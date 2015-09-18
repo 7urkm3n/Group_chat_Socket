@@ -7,41 +7,45 @@ $(document).ready(function(){
 
 	var socket = io.connect(); // Socket goes Here !
 	var userId;
-	
-		
-	
-
-	function user_data(){
-		socket.on('socketId', function(data){
-			userId = data;
-		}); // End of socketId	
-
+	var userName;
+	socket.on('socketId', function(data){
 		var name = prompt('Whats yr name?'); // Prompt name
-		var socketId = userId;
-		var user_Id = localStorage.getItem('userId') || socketId;
+		userName = name;
+		var socket_Id = data;
+		var user_Id = localStorage.getItem('userId') || socket_Id;
+		userId = user_Id;
 		localStorage.setItem('userId', user_Id);
 		console.log(name+': '+ user_Id);
+		// Socket, sending 'user_join'
+		socket.emit('user_joining', {userId: user_Id, userName: name}); 
+	}); // End of socketId
 
-		return {userId: user_Id, userName: name};
-	}
-		
-
-	socket.emit('user_joining', user_data()); // Socket 'user_join'
 	
-
-	$('#btn_send').click(function(){
-		var input_message = $('#message').val();
-		socket.emit('sending_message', {userId: user_Id, msg: input_message});
-	}); //End of btn_send
 	
 	// Socket user_joiner 
 	socket.on('user_joined', function(data){
 		$('#in_chat').append('<p>'+capitalize(data.name)+': joined the chatroom...</p>');
 	});
 
+
+	// Socket sending message
+	$('#btn_send').click(function(){
+		var input_message = $('#message').val();
+		// socket.emit('sending_message', [userid == userId, content{userName: userName, msg: input_message}]);
+		socket.emit('sending_message', {userName: userName, msg: input_message});
+			$('#message').val('');
+			if (!input_message){
+				return false
+			};
+		
+	}); //End of btn_send
+	
+	// Socket, listenim message
 	socket.on('messages', function(data){
-		console.log('its message data: '+data);
-		// $('#in_chat').append('<p>'+data+'</p>');
+		console.log(data.messages.msg);
+		var nm = data.messages.userName;
+		var ms = data.messages.msg;
+		$('#in_chat').append('<p>'+nm+': '+ms+'</p>');
 	});
 
 		
