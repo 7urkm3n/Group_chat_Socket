@@ -20,26 +20,30 @@ var messages = [] // Messages
 
 // Sockets
 io.sockets.on('connection', function(socket){
-	console.log('Socket # '+socket.id);
+	// console.log('Socket # '+socket.id);
 	socketId = socket.id;
 	socket.emit('socketId', socketId);
+	
 
 	// User Joining listening
 	socket.on('user_joining', function(data){
-		console.log(data);
 		user.push(data);
-
 		io.sockets.emit('user_joined', {name: data.userName})
 	}); //end 'user_join' Socket
 
 	// Sending Message
 	socket.on('sending_message', function(data){
-		
 		messages.push(data);
-		console.log(messages[messages.length - 1]);
+		// console.log(data);
+		console.log(user);
 		io.sockets.emit('messages', {messages: messages[messages.length - 1]});
 	});
 
+	socket.on('disc', function(data){
+		// console.log(data);
+
+		io.sockets.emit('user_disc', data);
+	});
 });// end of socket connection
 
 

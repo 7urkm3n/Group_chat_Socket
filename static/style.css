@@ -1,6 +1,9 @@
 textarea{
 	resize: none;
 }
+span{
+	margin: 10px -30px 0 0;
+}
 
 .chat_box{
 	margin: 0 auto;
@@ -24,4 +27,20 @@ textarea{
 	overflow: auto;
 	background-color: #fff;
 	border-radius: 15px;
+}
+
+.disconnected{
+	color: #C2180B;
+}
+
+.connected{
+	color: #48C263;
+}
+
+.username{
+	color: #1A5AC2;
+}
+
+.form-control{
+	height: 70px;
 }

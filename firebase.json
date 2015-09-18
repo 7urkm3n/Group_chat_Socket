@@ -1,0 +1,9 @@
+{
+  "firebase": "demotm",
+  "public": "index.ejs",
+  "ignore": [
+    "firebase.json",
+    "**/.*",
+    "**/node_modules/**"
+  ]
+}
