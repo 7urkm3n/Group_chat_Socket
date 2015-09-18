@@ -1,0 +1,27 @@
+textarea{
+	resize: none;
+}
+
+.chat_box{
+	margin: 0 auto;
+	width: 700px;
+	height: 650px;
+	border: 1px solid #6B7C7F;
+	border-radius: 15px;
+}
+
+.btn{
+	width: 150px;
+	font-size: 18px;
+	margin-top: 5px;
+}
+
+.in_chat{
+	width: 660px;
+	height: 490px;
+	padding: 10px;
+	margin: 0 0 10px 0;
+	overflow: auto;
+	background-color: #fff;
+	border-radius: 15px;
+}

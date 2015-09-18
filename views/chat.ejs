@@ -1,0 +1,60 @@
+
+$(document).ready(function(){
+	// Capitalizes first letter...
+	function capitalize(s){
+    	return s[0].toUpperCase() + s.slice(1);
+	}
+
+	var socket = io.connect(); // Socket goes Here !
+	var userId;
+	
+		
+	
+
+	function user_data(){
+		socket.on('socketId', function(data){
+			userId = data;
+		}); // End of socketId	
+
+		var name = prompt('Whats yr name?'); // Prompt name
+		var socketId = userId;
+		var user_Id = localStorage.getItem('userId') || socketId;
+		localStorage.setItem('userId', user_Id);
+		console.log(name+': '+ user_Id);
+
+		return {userId: user_Id, userName: name};
+	}
+		
+
+	socket.emit('user_joining', user_data()); // Socket 'user_join'
+	
+
+	$('#btn_send').click(function(){
+		var input_message = $('#message').val();
+		socket.emit('sending_message', {userId: user_Id, msg: input_message});
+	}); //End of btn_send
+	
+	// Socket user_joiner 
+	socket.on('user_joined', function(data){
+		$('#in_chat').append('<p>'+capitalize(data.name)+': joined the chatroom...</p>');
+	});
+
+	socket.on('messages', function(data){
+		console.log('its message data: '+data);
+		// $('#in_chat').append('<p>'+data+'</p>');
+	});
+
+		
+
+
+
+	
+	
+
+	
+
+
+
+
+	
+}); //end of Jquery Document.ready !!!
