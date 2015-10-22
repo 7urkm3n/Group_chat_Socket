@@ -1,18 +1,28 @@
 var express = require('express'),
 	app = express(),
 	server = require('http').Server(app),
-	io = require('socket.io')(server);
+	io = require('socket.io')(server),
+    fs = require('fs');
 
 // app.use(express.static('app'));
 
-app.use(express.static(__dirname + '/static'));
-app.set('views', __dirname + '/views');
-app.set('view engine', 'ejs');
+// app.use(express.static(__dirname + '/static'));
+// app.set('views', __dirname + '/views');
+
+app.use(express.static('static'));
+app.use(express.static('views'));
+
+// app.set('view engine', 'ejs');
 
 app.get('/', function(req, res){
 	res.render('index');
 });
 
+// fs.readFile('views/404.html', 'utf8', function (errors, contents){
+//     response.writeHead(404, {'Content-Type': 'text/html'});  // send data about response
+//     response.write(contents);  //  send response body
+//     response.end();
+// });
 
 var user = []; // User array
 var messages = [] // Messages

@@ -2,17 +2,21 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Document</title>
+	<title>Demo | TmChat</title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 	<link rel="stylesheet" href="style.css">
 	<script src='/socket.io/socket.io.js'></script>
 	<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js'></script>
-	<script> <% include chat %> </script>
+	<script src='chat.js'></script>
+
 </head>
 <body>
 <div class="container">
 	<div class="col-md-10 col-md-offset-1">
-		<h1 class='text-center'>Demo Tm Chat<button id='disc'class='btn btn-danger pull-right'> Disconnect</button></h1>
+		<h1 class='text-center'> 
+			<span class='red'>Demo</span>
+			<span class='green'> Tm-Chat</span> 
+			<button id='disc'class='btn btn-danger pull-right right'> Disconnect</button></h1>
 		<div class="chat_box well">
 			<div class="col-md-12 in_chat">
 				<div id='in_chat'></div>

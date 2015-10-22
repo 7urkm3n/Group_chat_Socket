@@ -1,8 +1,11 @@
 textarea{
 	resize: none;
 }
-span{
-	margin: 10px -30px 0 0;
+.red{
+	color: #C2180B;
+}
+.green{
+	color: #48C263;
 }
 
 .chat_box{
@@ -17,6 +20,9 @@ span{
 	width: 150px;
 	font-size: 18px;
 	margin-top: 5px;
+}
+.right{
+	margin-right: 110px;
 }
 
 .in_chat{
