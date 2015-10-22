@@ -40,11 +40,12 @@ io.sockets.on('connection', function(socket){
 });// end of socket connection
 
 // Server Listens
-// server.listen(4000, function(){
-// 	console.log('Server runs on Port: 4000');
-// });
-
-app.set('port', (process.env.PORT || 5000));
-app.listen(app.get('port'), function() {
-  console.log('Node app is running on port', app.get('port'));
+server.listen(4000, function(){
+	console.log('Server runs on Port: 4000');
 });
+
+
+// app.set('port', (process.env.PORT || 5000));
+// app.listen(app.get('port'), function() {
+//   console.log('Node app is running on port', app.get('port'));
+// });
