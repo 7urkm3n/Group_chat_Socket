@@ -17,5 +17,6 @@
   "engines": {
     "node": "4.2.1",
     "npm": "2.14.7"
+    "Linux": "3.13.0-63-generic"
   }
 }
