@@ -5,7 +5,7 @@ $(document).ready(function(){
     	return s[0].toUpperCase() + s.slice(1);
 	}
 
-	var socket = io.connect(); // Socket goes Here !
+	var socket = io.connect('https://enigmatic-fortress-1383.herokuapp.com'); // Socket goes Here !
 	var userId;
 	var userName;
 	socket.on('socketId', function(data){
