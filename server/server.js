@@ -30,7 +30,7 @@ io.sockets.on('connection', function(socket){
 	// Sending Message
 	socket.on('sending_message', function(data){
 		messages.push(data);
-		console.log(user);
+		// console.log(user);
 		io.sockets.emit('messages', {messages: messages[messages.length - 1]});
 	});
 

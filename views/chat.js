@@ -23,7 +23,8 @@ $(document).ready(function(){
 
 	// Socket user_joiner 
 	socket.on('user_joined', function(data){
-		$('#in_chat').append('<p class="connected">'+capitalize(data.name)+': joined the chatroom...</p>').scrollTop($("#in_chat")[0].scrollHeight);
+		var user_joined = '<p class="connected">'+capitalize(data.name)+': joined the chatroom...</p>';
+		$('#in_chat').append(user_joined).scrollTop($("#in_chat")[0].scrollHeight);
 	});
 
 	// Socket sending message
@@ -54,9 +55,9 @@ $(document).ready(function(){
 	});
 
 	socket.on('user_disc', function(data){
-		var disnm = capitalize(data.userName);
-			$('#in_chat').append('<p class="disconnected">'+ disnm +': has left the room. </p>').scrollTop($("#in_chat")[0].scrollHeight);
-		});
+		var discnm = capitalize(data.userName);
+			$('#in_chat').append('<p class="disconnected">'+ discnm +': has left the room. </p>', alert("<NOTIFIED> You are safe to leave !!!")).scrollTop($("#in_chat")[0].scrollHeight);
+	});
 
 		
 }); //end of Jquery Document.ready !!!
