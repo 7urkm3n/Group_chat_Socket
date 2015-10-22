@@ -4,30 +4,21 @@ var express = require('express'),
 	io = require('socket.io')(server),
     fs = require('fs');
 
-// app.use(express.static('app'));
 
-// app.use(express.static(__dirname + '/static'));
+app.set('port', (process.env.PORT || 5000));
+
+app.use(express.static(__dirname + '/views'));
+// app.use(express.static('views'));
+
 // app.set('views', __dirname + '/views');
-
-app.use(express.static('static'));
-app.use(express.static('views'));
-
 // app.set('view engine', 'ejs');
 
 app.get('/', function(req, res){
 	res.render('index');
 });
 
-// fs.readFile('views/404.html', 'utf8', function (errors, contents){
-//     response.writeHead(404, {'Content-Type': 'text/html'});  // send data about response
-//     response.write(contents);  //  send response body
-//     response.end();
-// });
-
 var user = []; // User array
 var messages = [] // Messages
-
-
 // Sockets
 io.sockets.on('connection', function(socket){
 	// console.log('Socket # '+socket.id);
@@ -57,7 +48,12 @@ io.sockets.on('connection', function(socket){
 });// end of socket connection
 
 
+
 // Server Listens
-server.listen(4000, function(){
-	console.log('Server runs on Port: 4000');
+// server.listen(4000, function(){
+// 	console.log('Server runs on Port: 4000');
+// });
+
+app.listen(app.get('port'), function() {
+  console.log('Node app is running on port', app.get('port'));
 });
