@@ -56,7 +56,7 @@ $(document).ready(function(){
 
 	socket.on('user_disc', function(data){
 		var discnm = capitalize(data.userName);
-			$('#in_chat').append('<p class="disconnected">'+ discnm +': has left the room. </p>', alert("<NOTIFIED> You are safe to leave !!!")).scrollTop($("#in_chat")[0].scrollHeight);
+			$('#in_chat').append('<p class="disconnected">'+ discnm +': has left the room. </p>', alert(" NOTIFICATION '"+ discnm + "' left the room")).scrollTop($("#in_chat")[0].scrollHeight);
 	});
 
 		
